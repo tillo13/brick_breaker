@@ -1,0 +1,8 @@
+Flask==2.3.3
+Pillow==10.0.0  # For image processing (used in game_renderer.py)
+Werkzeug==2.3.7  # Flask dependency
+Jinja2==3.1.2  # Flask template engine
+MarkupSafe==2.1.3  # Jinja2 dependency
+itsdangerous==2.1.2  # Flask dependency
+click==8.1.7  # Flask dependency
+blinker==1.6.2  # Flask signals
