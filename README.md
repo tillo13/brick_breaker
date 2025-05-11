@@ -1,6 +1,5 @@
 # Super Brick Breaker Deluxe
 
-<<<<<<< HEAD
 A modern implementation of the classic brick breaker game using Flask for the backend and vanilla JavaScript for the frontend. This project includes a full game engine, level editor, and testing environment.
 
 ![Brick Breaker Game](screenshot.png)
@@ -40,23 +39,27 @@ A modern implementation of the classic brick breaker game using Flask for the ba
 ## Installation
 
 1. Clone the repository:
+
    ```
    git clone https://github.com/tillo13/brick_breaker.git
    cd brick_breaker
    ```
 
 2. Set up a virtual environment (optional but recommended):
+
    ```
    python -m venv venv
    source venv/bin/activate  # On Windows use: venv\Scripts\activate
    ```
 
 3. Install dependencies:
+
    ```
    pip install -r requirements.txt
    ```
 
 4. Run the application:
+
    ```
    python app.py
    ```
@@ -92,15 +95,15 @@ Some bricks contain powerups that fall when broken. Collect these with your padd
 
 The game features 8 different powerups that can dramatically change gameplay:
 
-| Symbol | Color  | Effect | Description |
-|--------|--------|--------|-------------|
-| +      | Green  | Expand | Increases paddle size |
-| -      | Red    | Shrink | Decreases paddle size (negative) |
-| M      | Cyan   | Multi  | Adds two extra balls to the game |
-| S      | Blue   | Slow   | Decreases ball speed |
-| F      | Orange | Fast   | Increases ball speed (negative) |
-| L      | Yellow | Laser  | Allows the paddle to shoot lasers |
-| ♥      | Purple | Life   | Grants an extra life |
+| Symbol | Color  | Effect | Description                                 |
+| ------ | ------ | ------ | ------------------------------------------- |
+| +      | Green  | Expand | Increases paddle size                       |
+| -      | Red    | Shrink | Decreases paddle size (negative)            |
+| M      | Cyan   | Multi  | Adds two extra balls to the game            |
+| S      | Blue   | Slow   | Decreases ball speed                        |
+| F      | Orange | Fast   | Increases ball speed (negative)             |
+| L      | Yellow | Laser  | Allows the paddle to shoot lasers           |
+| ♥      | Purple | Life   | Grants an extra life                        |
 | T      | Yellow | Thru   | Ball passes through bricks without bouncing |
 
 ## Level Editor
@@ -129,6 +132,7 @@ A key feature of Super Brick Breaker Deluxe is the built-in level editor that al
    - Continue refining and testing as needed
 
 The editor now provides a seamless workflow:
+
 - Creates a new level automatically when first opened
 - Maintains your level state between test runs
 - Returns to the same level after testing
@@ -202,88 +206,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ---
 
 Created by [tillo13](https://github.com/tillo13) - Feel free to contact me for any questions!
-=======
-A feature-rich implementation of the classic Brick Breaker game using Python and Pygame.
-
-## Description
-
-Super Brick Breaker Deluxe is a modern take on the classic arcade game where players control a paddle to bounce a ball and break bricks. This implementation includes multiple powerups, levels with increasing difficulty, special effects, and much more!
-
-## Features
-
-### Multiple Ball Types
-- **Normal Ball**: Bounces off bricks and walls
-- **Thru-Ball**: Can pass through multiple bricks without bouncing
-
-### Advanced Powerup System
-- **Expand Paddle** (Green +): Makes your paddle wider
-- **Shrink Paddle** (Red -): Negative powerup that makes your paddle smaller
-- **Multi-Ball** (Cyan M): Adds extra balls to the game
-- **Slow Ball** (Blue S): Reduces ball speed for easier control
-- **Fast Ball** (Orange F): Negative powerup that increases ball speed
-- **Laser** (Yellow L): Gives your paddle the ability to shoot lasers
-- **Extra Life** (Purple ♥): Gives you an additional life
-- **Thru-Ball** (Yellow T): Makes balls pass through bricks without bouncing
-
-### Level Progression
-- Multiple unique level layouts that get progressively more challenging
-- Bricks with different strength values (1-4 hits required to break)
-- Visual indication of brick strength with numbers and colors
-
-### Visual Effects
-- Particle effects when bricks break
-- Glowing effects for special powerups
-- Animated powerups that rotate as they fall
-
-### Game Mechanics
-- Paddle physics that angles the ball based on where it hits
-- Lasers that can destroy bricks from a distance
-- Lives system with visual indicators
-- Score tracking and high score saving
-
-### User Experience
-- Mouse or keyboard controls (toggle with M key)
-- Pause functionality (P key)
-- Level transition screens
-- Game over screen with high score tracking
-
-## Controls
-- **Mouse Movement**: Move the paddle left and right
-- **Left/Right Arrow Keys**: Alternative paddle control
-- **Space Bar**: Launch ball / Start level
-- **M Key**: Toggle between mouse and keyboard controls
-- **P Key**: Pause game
-- **R Key**: Reset (when all balls are lost)
-- **Esc Key**: Quit game
-
-## Requirements
-- Python 3.x
-- Pygame library
-
-## Installation
-1. Make sure you have Python installed on your system.
-2. Install the Pygame library:
-pip install pygame
-3. Clone this repository or download the source code.
-4. Run the game:
-python brick_breaker.py
-
-## Optional: Adding Sound Files
-The game looks for the following sound files (not included):
-- bounce.wav - Ball bouncing off walls/paddle
-- brick.wav - Ball hitting bricks
-- powerup.wav - Collecting powerups
-- life_lost.wav - Losing a life
-- level_complete.wav - Completing a level
-
-If these files aren't present, the game will still run without sound.
-
-## Screenshot
-![Game Screenshot](screenshot.png)
-
-## License
-This project is open source and available under the MIT License.
-
-## Credits
-Created using Python and Pygame.
->>>>>>> c9b58f9b6b5210c1a80e74bceb16a1196c5e9847
