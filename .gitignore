@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual Environment (your specific venv name)
+venv_brick/
+
+# Flask
+instance/
+.webassets-cache
+
+# Operating System
+.DS_Store
+._*
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# Keep all game data since nothing is secret
+# high_scores.json is NOT ignored

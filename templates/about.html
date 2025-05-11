@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Super Brick Breaker Deluxe - About{% endblock %}
+
+{% block content %}
+<section class="about">
+    <h1>About Super Brick Breaker Deluxe</h1>
+    
+    <div class="about-content">
+        <h2>Game Description</h2>
+        <p>
+            Super Brick Breaker Deluxe is a modern take on the classic brick breaker arcade game.
+            Control a paddle to bounce a ball and break bricks, collecting powerups along the way.
+            Progress through increasingly challenging levels and aim for a high score!
+        </p>
+        
+        <h2>How to Play</h2>
+        <ul>
+            <li>Use the mouse or arrow keys to move the paddle</li>
+            <li>Press space to launch the ball</li>
+            <li>Break all bricks to complete the level</li>
+            <li>Don't let the ball fall!</li>
+            <li>Collect powerups for special abilities</li>
+        </ul>
+        
+        <h2>Powerups</h2>
+        <div class="powerups-list">
+            <div class="powerup">
+                <div class="powerup-icon expand">+</div>
+                <p>Expand Paddle: Increases the size of your paddle</p>
+            </div>
+            <div class="powerup">
+                <div class="powerup-icon shrink">-</div>
+                <p>Shrink Paddle: Decreases the size of your paddle</p>
+            </div>
+            <div class="powerup">
+                <div class="powerup-icon multi">M</div>
+                <p>Multi Ball: Adds extra balls to the game</p>
+            </div>
+            <div class="powerup">
+                <div class="powerup-icon slow">S</div>
+                <p>Slow Ball: Decreases the speed of all balls</p>
+            </div>
+            <div class="powerup">
+                <div class="powerup-icon fast">F</div>
+                <p>Fast Ball: Increases the speed of all balls</p>
+            </div>
+            <div class="powerup">
+                <div class="powerup-icon laser">L</div>
+                <p>Laser: Allows the paddle to shoot lasers</p>
+            </div>
+            <div class="powerup">
+                <div class="powerup-icon life">♥</div>
+                <p>Extra Life: Gives you an additional life</p>
+            </div>
+            <div class="powerup">
+                <div class="powerup-icon thru">T</div>
+                <p>Thru Ball: Ball passes through bricks without bouncing</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

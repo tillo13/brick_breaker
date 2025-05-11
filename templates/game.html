@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Super Brick Breaker Deluxe - Play{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/game.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="game-container">
+    <div class="game-header">
+        <div id="lives">Lives: 3</div>
+        <div id="score">Score: 0</div>
+        <div id="level">Level: 1</div>
+    </div>
+    
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    
+    <div class="game-controls">
+        <p>Press SPACE to launch the ball</p>
+        <p>Use MOUSE or ARROW KEYS to move the paddle</p>
+        <p>Press M to toggle between mouse/keyboard control</p>
+        <p>Press K to force keyboard-only mode (ignores mouse)</p>
+        <p>Press F to toggle fullscreen mode</p>
+        <p>Press P to pause the game</p>
+        <p>Press S to toggle sound on/off</p>
+    </div>
+    
+    <div id="gameOver" class="overlay" style="display: none;">
+        <div class="overlay-content">
+            <h2>Game Over</h2>
+            <p id="finalScore">Score: 0</p>
+            <p id="highScore">High Score: 0</p>
+            <button id="restartButton">Play Again</button>
+        </div>
+    </div>
+    
+    <div id="levelComplete" class="overlay" style="display: none;">
+        <div class="overlay-content">
+            <h2>Level Complete!</h2>
+            <p id="levelScore">Score: 0</p>
+            <button id="nextLevelButton">Next Level</button>
+        </div>
+    </div>
+    
+    <div id="pauseMenu" class="overlay" style="display: none;">
+        <div class="overlay-content">
+            <h2>Game Paused</h2>
+            <button id="resumeButton">Resume</button>
+            <button id="quitButton">Quit</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/game_objects.js') }}"></script>
+<script src="{{ url_for('static', filename='js/game_renderer.js') }}"></script>
+<script src="{{ url_for('static', filename='js/game_controls.js') }}"></script>
+<script src="{{ url_for('static', filename='js/game_state.js') }}"></script>
+<script src="{{ url_for('static', filename='js/sound_manager.js') }}"></script>
+<script src="{{ url_for('static', filename='js/game.js') }}"></script>
+{% endblock %}

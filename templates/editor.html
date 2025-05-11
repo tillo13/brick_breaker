@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+
+{% block title %}Super Brick Breaker Deluxe - Level Editor{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/game.css') }}">
+<style>
+    .editor-container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    
+    .editor-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    
+    .tools {
+        background-color: rgba(20, 20, 40, 0.7);
+        padding: 1rem;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+    }
+    
+    .toolbar {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+    }
+    
+    .tool-group {
+        margin-bottom: 10px;
+    }
+    
+    .tool-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: var(--secondary-color);
+    }
+    
+    .canvas-container {
+        position: relative;
+        background-color: #000033;
+        border: 2px solid rgba(80, 80, 250, 0.5);
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    
+    #editorCanvas {
+        display: block;
+        background-color: #000033;
+    }
+    
+    .brick-preview {
+        width: 40px;
+        height: 20px;
+        display: inline-block;
+        margin: 0 5px;
+        cursor: pointer;
+        text-align: center;
+        line-height: 20px;
+        color: white;
+        font-weight: bold;
+        border: 2px solid transparent;
+    }
+    
+    .brick-preview.selected {
+        border: 2px solid white;
+    }
+    
+    .save-panel {
+        background-color: rgba(20, 20, 40, 0.7);
+        padding: 1rem;
+        border-radius: 10px;
+        margin-top: 1rem;
+    }
+    
+    .control-form {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
+        align-items: center;
+    }
+    
+    .control-form input[type="text"],
+    .control-form input[type="number"] {
+        background-color: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(80, 80, 250, 0.5);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.2s;
+    }
+    
+    .btn-primary {
+        background-color: var(--primary-color);
+        color: white;
+    }
+    
+    .btn-danger {
+        background-color: var(--danger-color);
+        color: white;
+    }
+    
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="editor-container">
+    <div class="editor-header">
+        <h1>Level Editor</h1>
+        <div>
+            <a href="{{ url_for('game') }}" class="btn btn-primary">Play Game</a>
+        </div>
+    </div>
+    
+    <div class="tools">
+        <div class="tool-group">
+            <label>Select Level:</label>
+            <div class="control-form">
+                <select id="levelSelect" class="form-control">
+                    <!-- Will be populated with JavaScript -->
+                </select>
+                <button id="loadLevelBtn" class="btn btn-primary">Load Level</button>
+                <button id="newLevelBtn" class="btn btn-primary">New Level</button>
+            </div>
+        </div>
+        
+        <div class="tool-group">
+            <label>Tools:</label>
+            <div class="toolbar">
+                <button id="placeBrickBtn" class="btn btn-primary">Place Brick</button>
+                <button id="removeBrickBtn" class="btn btn-danger">Remove Brick</button>
+                <button id="clearAllBtn" class="btn btn-danger">Clear All</button>
+            </div>
+        </div>
+        
+        <div class="tool-group">
+            <label>Brick Type:</label>
+            <div id="brickTypes">
+                <div class="brick-preview" data-strength="1" style="background-color: #ff3232"></div>
+                <div class="brick-preview" data-strength="2" style="background-color: #ffcc00">2</div>
+                <div class="brick-preview" data-strength="3" style="background-color: #32ff32">3</div>
+                <div class="brick-preview" data-strength="4" style="background-color: #3232ff">4</div>
+            </div>
+        </div>
+        
+        <div class="tool-group">
+            <label>Powerup:</label>
+            <div class="control-form">
+                <input type="checkbox" id="hasPowerup">
+                <label for="hasPowerup">Add Powerup</label>
+                <select id="powerupType">
+                    <option value="0">Expand</option>
+                    <option value="1">Shrink</option>
+                    <option value="2">Multi Ball</option>
+                    <option value="3">Slow Ball</option>
+                    <option value="4">Fast Ball</option>
+                    <option value="5">Laser</option>
+                    <option value="6">Extra Life</option>
+                    <option value="7">Thru Ball</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <div class="canvas-container">
+        <canvas id="editorCanvas" width="800" height="600"></canvas>
+    </div>
+    
+    <div class="save-panel">
+        <div class="tool-group">
+            <label>Level Details:</label>
+            <div class="control-form">
+                <label for="levelName">Name:</label>
+                <input type="text" id="levelName" placeholder="Level Name">
+                <label for="levelId">ID:</label>
+                <input type="text" id="levelId" placeholder="Auto-generated" readonly style="background-color: rgba(0, 0, 0, 0.5); color: #888;">
+                <small style="color: #888; margin-left: 5px;">(ID is generated automatically)</small>
+            </div>
+        </div>
+        
+        <button id="saveBtn" class="btn btn-primary">Save Level</button>
+        <button id="testBtn" class="btn btn-primary">Test Level</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/level_editor.js') }}"></script>
+{% endblock %}

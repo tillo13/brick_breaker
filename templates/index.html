@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Super Brick Breaker Deluxe - Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to Super Brick Breaker Deluxe</h1>
+        <p>The ultimate brick-breaking experience!</p>
+        <a href="{{ url_for('game') }}" class="btn btn-primary">Play Now</a>
+    </div>
+</section>
+
+<section class="features">
+    <div class="feature">
+        <h2>Multiple Levels</h2>
+        <p>Test your skills across various challenging levels</p>
+    </div>
+    <div class="feature">
+        <h2>Power-ups</h2>
+        <p>Collect special power-ups to enhance your gameplay</p>
+    </div>
+    <div class="feature">
+        <h2>High Scores</h2>
+        <p>Compete for the highest score</p>
+    </div>
+</section>
+{% endblock %}
